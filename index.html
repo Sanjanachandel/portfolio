@@ -142,13 +142,54 @@
       text-align: center;
       color: #94a3b8;
     }
+    /* Hamburger icon */
+.hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+/* Responsive nav */
+@media (max-width: 768px) {
+  nav {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #252424; /* or match your header bg */
+    position: absolute;
+    top: 60px; /* adjust as per your header height */
+    right: 20px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 1000;
+  }
+
+  nav.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
+
   </style>
 </head>
+<script>
+  function toggleMenu() {
+    document.getElementById('navMenu').classList.toggle('show');
+  }
+</script>
+
 <body>
 
 <header>
   <h1>Sanjana</h1>
-  <nav>
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
+  <nav id="navMenu">
     <a href="#hero">Home</a>
     <a href="#projects">Projects</a>
     <a href="#about">About</a>
@@ -156,7 +197,7 @@
     <a href="#certifications">Certifications</a>
     <a href="#skills">Skills</a>
     <a href="#contact">Contact</a>
-  </nav>
+    </nav>
 </header>
 
 <section class="hero" id="hero">
